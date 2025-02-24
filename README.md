@@ -7,6 +7,7 @@ This wrapper is used to log in, and do things in the studygo.com forum for askin
 - Get info about a question `forum_question_get(id)`
 - Answer a question `forum_question_answer(id, answer)`
 - Like an answer `forum_answer_like(id)`
+- Create a question, the subject defaults to 1 (English) `forum_question_create(content, subject_id)`
 
 ## Setting up a client.
 Make a client with the `Client` class, like this:
