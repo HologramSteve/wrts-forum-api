@@ -75,3 +75,12 @@ class Client:
         # res = res.json() (caused error, no response from api)
 
         return res
+
+    def forum_question_create(self, content, subject_id=1):
+        res = self.post("/qna/questions", {"qna_question": {
+            "contents": content,
+            "qna_attachments_attributes": [],
+            "subject_id": subject_id
+        }})
+
+        return res
