@@ -42,7 +42,14 @@ body { font-family: Arial, sans-serif; margin: 0; background: #f8f9fa; }
 <div class="section" id="class-Client"><h2>Class <span class="code">Client</span></h2>
 <div><b>File:</b> <span class="code">Base/Client.py</span></div>
 <div><b>Description:</b> Handles authentication and API requests for a single user. Initializes forum and group managers.</div>
-<div><b>Properties:</b><ul class="prop-list"><li><span class="code">baseurl</span></li><li><span class="code">headers</span></li><li><span class="code">token</span></li><li><span class="code">ClientRequests</span></li><li><span class="code">Forum</span></li><li><span class="code">GroupManager</span></li></ul></div>
+<div><b>Properties:</b><ul class="prop-list">
+<li><span class="code">baseurl</span>: <span class="code">str</span></li>
+<li><span class="code">headers</span>: <span class="code">dict</span></li>
+<li><span class="code">token</span>: <span class="code">str</span></li>
+<li><span class="code">ClientRequests</span>: <span class="code"><span class="ref" data-ref="class-ClientRequests">ClientRequests</span></span></li>
+<li><span class="code">Forum</span>: <span class="code"><span class="ref" data-ref="class-ForumManager">ForumManager</span></span></li>
+<li><span class="code">GroupManager</span>: <span class="code"><span class="ref" data-ref="class-GroupManager">GroupManager</span></span></li>
+</ul></div>
 <div><b>Methods:</b>
 <div style="margin-left:20px; margin-bottom:10px;"><span class="code">__init__</span>(<span class="code">email</span>, <span class="code">password</span>)
 <div style="margin-left:20px;">Authenticate user, set up headers, token, and managers. Raises TokenInvalidError if login fails.</div>
@@ -56,7 +63,11 @@ body { font-family: Arial, sans-serif; margin: 0; background: #f8f9fa; }
 <div class="section" id="class-ClientAuth"><h2>Class <span class="code">ClientAuth</span></h2>
 <div><b>File:</b> <span class="code">Base/ClientAuth.py</span></div>
 <div><b>Description:</b> Handles authentication, including CAPTCHA solving if required.</div>
-<div><b>Properties:</b><ul class="prop-list"><li><span class="code">baseurl</span></li><li><span class="code">headers</span></li><li><span class="code">token</span></li></ul></div>
+<div><b>Properties:</b><ul class="prop-list">
+<li><span class="code">baseurl</span>: <span class="code">str</span></li>
+<li><span class="code">headers</span>: <span class="code">dict</span></li>
+<li><span class="code">token</span>: <span class="code">str</span></li>
+</ul></div>
 <div><b>Methods:</b>
 <div style="margin-left:20px; margin-bottom:10px;"><span class="code">__init__</span>(<span class="code">email</span>, <span class="code">password</span>)
 <div style="margin-left:20px;">Authenticate user, solve CAPTCHA if needed, set up headers and token. Raises TokenInvalidError if login fails.</div>
@@ -70,7 +81,13 @@ body { font-family: Arial, sans-serif; margin: 0; background: #f8f9fa; }
 <div class="section" id="class-ClientCluster"><h2>Class <span class="code">ClientCluster</span></h2>
 <div><b>File:</b> <span class="code">Base/ClientCluster.py</span></div>
 <div><b>Description:</b> Manages multiple accounts in parallel using threads. Each account is authenticated and stored for cluster actions.</div>
-<div><b>Properties:</b><ul class="prop-list"><li><span class="code">baseurl</span></li><li><span class="code">tokens</span></li><li><span class="code">ClientRequests</span></li><li><span class="code">Forum</span></li><li><span class="code">GroupManager</span></li></ul></div>
+<div><b>Properties:</b><ul class="prop-list">
+<li><span class="code">baseurl</span>: <span class="code">str</span></li>
+<li><span class="code">tokens</span>: <span class="code">list[str] or list[ClientAuth]</span></li>
+<li><span class="code">ClientRequests</span>: <span class="code"><span class="ref" data-ref="class-ClientRequests">ClientRequests</span></span></li>
+<li><span class="code">Forum</span>: <span class="code"><span class="ref" data-ref="class-ForumManager">ForumManager</span></span></li>
+<li><span class="code">GroupManager</span>: <span class="code"><span class="ref" data-ref="class-GroupManager">GroupManager</span></span></li>
+</ul></div>
 <div><b>Methods:</b>
 <div style="margin-left:20px; margin-bottom:10px;"><span class="code">__init__</span>(<span class="code">credentials</span>)
 <div style="margin-left:20px;">Authenticate multiple accounts concurrently, initialize managers.</div>
@@ -84,7 +101,13 @@ body { font-family: Arial, sans-serif; margin: 0; background: #f8f9fa; }
 <div class="section" id="class-ClientRequests"><h2>Class <span class="code">ClientRequests</span></h2>
 <div><b>File:</b> <span class="code">Base/ClientRequests.py</span></div>
 <div><b>Description:</b> Handles HTTP requests (GET/POST) to the WRTS API. Supports both single and cluster modes.</div>
-<div><b>Properties:</b><ul class="prop-list"><li><span class="code">tokens</span></li><li><span class="code">token</span></li><li><span class="code">isCluster</span></li><li><span class="code">baseurl</span></li><li><span class="code">headers</span></li></ul></div>
+<div><b>Properties:</b><ul class="prop-list">
+<li><span class="code">tokens</span>: <span class="code">list[str] or list[ClientAuth]</span></li>
+<li><span class="code">token</span>: <span class="code">str</span></li>
+<li><span class="code">isCluster</span>: <span class="code">bool</span></li>
+<li><span class="code">baseurl</span>: <span class="code">str</span></li>
+<li><span class="code">headers</span>: <span class="code">dict</span></li>
+</ul></div>
 <div><b>Methods:</b>
 <div style="margin-left:20px; margin-bottom:10px;"><span class="code">__init__</span>(<span class="code">token=None</span>, <span class="code">isCluster=False</span>, <span class="code">tokens=None</span>)
 <div style="margin-left:20px;">Initialize request handler for single or cluster mode.</div>
@@ -101,7 +124,9 @@ body { font-family: Arial, sans-serif; margin: 0; background: #f8f9fa; }
 <div class="section" id="class-ForumManager"><h2>Class <span class="code">ForumManager</span></h2>
 <div><b>File:</b> <span class="code">Classes/ForumManager.py</span></div>
 <div><b>Description:</b> Fetches forum posts and individual posts using the API. Returns ForumPost objects.</div>
-<div><b>Properties:</b><ul class="prop-list"><li><span class="code">ClientRequests</span></li></ul></div>
+<div><b>Properties:</b><ul class="prop-list">
+<li><span class="code">ClientRequests</span>: <span class="code"><span class="ref" data-ref="class-ClientRequests">ClientRequests</span></span></li>
+</ul></div>
 <div><b>Methods:</b>
 <div style="margin-left:20px; margin-bottom:10px;"><span class="code">__init__</span>(<span class="code">clientrequests</span>)
 <div style="margin-left:20px;">Initialize with a ClientRequests instance.</div>
@@ -120,7 +145,16 @@ body { font-family: Arial, sans-serif; margin: 0; background: #f8f9fa; }
 <div class="section" id="class-ForumPost"><h2>Class <span class="code">ForumPost</span></h2>
 <div><b>File:</b> <span class="code">Classes/ForumPost.py</span></div>
 <div><b>Description:</b> Represents a forum post, including its answers, author, and metadata. Can post answers to the forum.</div>
-<div><b>Properties:</b><ul class="prop-list"><li><span class="code">clientrequests</span></li><li><span class="code">id</span></li><li><span class="code">title</span></li><li><span class="code">content</span></li><li><span class="code">topic</span></li><li><span class="code">closed</span></li><li><span class="code">author</span></li><li><span class="code">answers</span></li></ul></div>
+<div><b>Properties:</b><ul class="prop-list">
+<li><span class="code">clientrequests</span>: <span class="code"><span class="ref" data-ref="class-ClientRequests">ClientRequests</span></span></li>
+<li><span class="code">id</span>: <span class="code">str</span></li>
+<li><span class="code">title</span>: <span class="code">str</span></li>
+<li><span class="code">content</span>: <span class="code">str</span></li>
+<li><span class="code">topic</span>: <span class="code">str or None</span></li>
+<li><span class="code">closed</span>: <span class="code">bool or None</span></li>
+<li><span class="code">author</span>: <span class="code"><span class="ref" data-ref="class-User">User</span></span></li>
+<li><span class="code">answers</span>: <span class="code">list[ForumAnswer]</span></li>
+</ul></div>
 <div><b>Methods:</b>
 <div style="margin-left:20px; margin-bottom:10px;"><span class="code">__init__</span>(<span class="code">data</span>, <span class="code">clientrequests</span>)
 <div style="margin-left:20px;">Initialize ForumPost from API data.</div>
@@ -134,7 +168,16 @@ body { font-family: Arial, sans-serif; margin: 0; background: #f8f9fa; }
 <div class="section" id="class-ForumAnswer"><h2>Class <span class="code">ForumAnswer</span></h2>
 <div><b>File:</b> <span class="code">Classes/ForumAnswer.py</span></div>
 <div><b>Description:</b> Represents an answer to a forum post. Supports liking and unliking answers.</div>
-<div><b>Properties:</b><ul class="prop-list"><li><span class="code">id</span></li><li><span class="code">content</span></li><li><span class="code">author</span></li><li><span class="code">votes</span></li><li><span class="code">correct</span></li><li><span class="code">questionId</span></li><li><span class="code">clientrequests</span></li><li><span class="code">liked</span></li></ul></div>
+<div><b>Properties:</b><ul class="prop-list">
+<li><span class="code">id</span>: <span class="code">str</span></li>
+<li><span class="code">content</span>: <span class="code">str</span></li>
+<li><span class="code">author</span>: <span class="code"><span class="ref" data-ref="class-User">User</span></span></li>
+<li><span class="code">votes</span>: <span class="code">int</span></li>
+<li><span class="code">correct</span>: <span class="code">bool</span></li>
+<li><span class="code">questionId</span>: <span class="code">str</span></li>
+<li><span class="code">clientrequests</span>: <span class="code"><span class="ref" data-ref="class-ClientRequests">ClientRequests</span></span></li>
+<li><span class="code">liked</span>: <span class="code">bool</span></li>
+</ul></div>
 <div><b>Methods:</b>
 <div style="margin-left:20px; margin-bottom:10px;"><span class="code">__init__</span>(<span class="code">clientrequests</span>, <span class="code">data</span>)
 <div style="margin-left:20px;">Initialize ForumAnswer from API data.</div>
@@ -153,7 +196,19 @@ body { font-family: Arial, sans-serif; margin: 0; background: #f8f9fa; }
 <div class="section" id="class-User"><h2>Class <span class="code">User</span></h2>
 <div><b>File:</b> <span class="code">Classes/User.py</span></div>
 <div><b>Description:</b> Represents a user, including profile information and achievements.</div>
-<div><b>Properties:</b><ul class="prop-list"><li><span class="code">clientrequests</span></li><li><span class="code">id</span></li><li><span class="code">username</span></li><li><span class="code">first_name</span></li><li><span class="code">grade_display</span></li><li><span class="code">profile_image_url</span></li><li><span class="code">highlighted_achievement</span></li><li><span class="code">package_name</span></li><li><span class="code">tutor</span></li><li><span class="code">employee</span></li><li><span class="code">profile_image</span></li></ul></div>
+<div><b>Properties:</b><ul class="prop-list">
+<li><span class="code">clientrequests</span>: <span class="code"><span class="ref" data-ref="class-ClientRequests">ClientRequests</span></span></li>
+<li><span class="code">id</span>: <span class="code">str</span></li>
+<li><span class="code">username</span>: <span class="code">str</span></li>
+<li><span class="code">first_name</span>: <span class="code">str</span></li>
+<li><span class="code">grade_display</span>: <span class="code">str</span></li>
+<li><span class="code">profile_image_url</span>: <span class="code">str</span></li>
+<li><span class="code">highlighted_achievement</span>: <span class="code">str</span></li>
+<li><span class="code">package_name</span>: <span class="code">str</span></li>
+<li><span class="code">tutor</span>: <span class="code">bool</span></li>
+<li><span class="code">employee</span>: <span class="code">bool</span></li>
+<li><span class="code">profile_image</span>: <span class="code"><span class="ref" data-ref="class-UserProfileImage">UserProfileImage</span></span></li>
+</ul></div>
 <div><b>Methods:</b>
 <div style="margin-left:20px; margin-bottom:10px;"><span class="code">__init__</span>(<span class="code">clientrequests</span>, <span class="code">data</span>)
 <div style="margin-left:20px;">Initialize User from API data.</div>
@@ -164,7 +219,11 @@ body { font-family: Arial, sans-serif; margin: 0; background: #f8f9fa; }
 <div class="section" id="class-UserProfileImage"><h2>Class <span class="code">UserProfileImage</span></h2>
 <div><b>File:</b> <span class="code">Classes/UserProfileImage.py</span></div>
 <div><b>Description:</b> Stores user profile image data.</div>
-<div><b>Properties:</b><ul class="prop-list"><li><span class="code">image_url</span></li><li><span class="code">profile_color</span></li><li><span class="code">profile_letter</span></li></ul></div>
+<div><b>Properties:</b><ul class="prop-list">
+<li><span class="code">image_url</span>: <span class="code">str</span></li>
+<li><span class="code">profile_color</span>: <span class="code">str</span></li>
+<li><span class="code">profile_letter</span>: <span class="code">str</span></li>
+</ul></div>
 <div><b>Methods:</b>
 <div style="margin-left:20px; margin-bottom:10px;"><span class="code">__init__</span>(<span class="code">data</span>)
 <div style="margin-left:20px;">Initialize UserProfileImage from data.</div>
@@ -174,7 +233,9 @@ body { font-family: Arial, sans-serif; margin: 0; background: #f8f9fa; }
 <div class="section" id="class-GroupManager"><h2>Class <span class="code">GroupManager</span></h2>
 <div><b>File:</b> <span class="code">Classes/GroupManager.py</span></div>
 <div><b>Description:</b> Manages group-related actions, such as fetching group invites.</div>
-<div><b>Properties:</b><ul class="prop-list"><li><span class="code">clientrequests</span></li></ul></div>
+<div><b>Properties:</b><ul class="prop-list">
+<li><span class="code">clientrequests</span>: <span class="code"><span class="ref" data-ref="class-ClientRequests">ClientRequests</span></span></li>
+</ul></div>
 <div><b>Methods:</b>
 <div style="margin-left:20px; margin-bottom:10px;"><span class="code">__init__</span>(<span class="code">clientrequests</span>)
 <div style="margin-left:20px;">Initialize with a ClientRequests instance.</div>
@@ -189,7 +250,11 @@ body { font-family: Arial, sans-serif; margin: 0; background: #f8f9fa; }
 <div class="section" id="class-GroupInvite"><h2>Class <span class="code">GroupInvite</span></h2>
 <div><b>File:</b> <span class="code">Classes/GroupInvite.py</span></div>
 <div><b>Description:</b> Represents a group invite and allows joining a group using a code.</div>
-<div><b>Properties:</b><ul class="prop-list"><li><span class="code">clientrequests</span></li><li><span class="code">code</span></li><li><span class="code">groupId</span></li></ul></div>
+<div><b>Properties:</b><ul class="prop-list">
+<li><span class="code">clientrequests</span>: <span class="code"><span class="ref" data-ref="class-ClientRequests">ClientRequests</span></span></li>
+<li><span class="code">code</span>: <span class="code">str</span></li>
+<li><span class="code">groupId</span>: <span class="code">str</span></li>
+</ul></div>
 <div><b>Methods:</b>
 <div style="margin-left:20px; margin-bottom:10px;"><span class="code">__init__</span>(<span class="code">code</span>, <span class="code">groupId</span>, <span class="code">clientrequests</span>)
 <div style="margin-left:20px;">Initialize GroupInvite with code and groupId.</div>
