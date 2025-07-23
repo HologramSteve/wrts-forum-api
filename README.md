@@ -84,7 +84,7 @@ for answer in post.answers:
 The `accounts.txt` file must contain at least 1 account in the format `email:password`.
 Then use a `ClientCluster` instead of normal `Client` and you're set!
 
-## Documentation has been moved here -> []()
+## Documentation has been moved here -> [Click here!](https://wrts-forum-api.vercel.app/)
 
 ## Credits and notes
 - The project is fully made by me, but the docs HTML is generated with AI (still 100% accurate). 
