@@ -99,3 +99,19 @@ class ClientRequests:
             response = requests.post(f"{self.baseurl}{url}", json=payload, headers=self.headers)
 
             return response
+        
+        def delete(self, url):
+            if self.isCluster:
+                threads = []
+                for token in self.tokens:
+                    t = threading.Thread(target=lambda tok=token: requests.delete(f"{self.baseurl}{url}", headers=genHeaders(tok.token)))
+                    t.start()
+                    threads.append(t)
+                for t in threads:
+                    t.join()
+                return
+            else:
+                if not url[0] == "/":
+                    return "Please enter a valid field!"
+                response = requests.delete(f"{self.baseurl}{url}", headers=self.headers)
+                return response

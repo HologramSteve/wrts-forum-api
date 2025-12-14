@@ -27,7 +27,7 @@ body { font-family: Arial, sans-serif; margin: 0; background: #f8f9fa; }
   <input id="searchbar" type="text" placeholder="Search..." oninput="filterSidebar()" />
   <h2>Classes</h2>
   <ul id="class-list">
-    <li data-target="class-Client">Client</li><li data-target="class-ClientAuth">ClientAuth</li><li data-target="class-ClientCluster">ClientCluster</li><li data-target="class-ClientRequests">ClientRequests</li><li data-target="class-ForumManager">ForumManager</li><li data-target="class-ForumPost">ForumPost</li><li data-target="class-ForumAnswer">ForumAnswer</li><li data-target="class-User">User</li><li data-target="class-UserProfileImage">UserProfileImage</li><li data-target="class-GroupManager">GroupManager</li><li data-target="class-GroupInvite">GroupInvite</li>
+    <li data-target="class-Client">Client</li><li data-target="class-ClientAuth">ClientAuth</li><li data-target="class-ClientCluster">ClientCluster</li><li data-target="class-ClientRequests">ClientRequests</li><li data-target="class-ForumManager">ForumManager</li><li data-target="class-ForumPost">ForumPost</li><li data-target="class-ForumAnswer">ForumAnswer</li><li data-target="class-User">User</li><li data-target="class-UserProfileImage">UserProfileImage</li><li data-target="class-GroupManager">GroupManager</li><li data-target="class-GroupInvite">GroupInvite</li><li data-target="class-Group">Group</li>
   </ul>
   <h2>Functions</h2>
   <ul id="func-list">
@@ -261,6 +261,45 @@ body { font-family: Arial, sans-serif; margin: 0; background: #f8f9fa; }
 </div>
 <div style="margin-left:20px; margin-bottom:10px;"><span class="code">join</span>()
 <div style="margin-left:20px;">Join the group using the invite code.</div>
+</div>
+</div>
+</div>
+<div class="section" id="class-Group"><h2>Class <span class="code">Group</span></h2>
+<div><b>File:</b> <span class="code">Classes/Group.py</span></div>
+<div><b>Description:</b> Represents a group, including metadata, images, membership, and status. Allows leaving the group.</div>
+<div><b>Properties:</b><ul class="prop-list">
+<li><span class="code">id</span>: <span class="code">str</span></li>
+<li><span class="code">name</span>: <span class="code">str</span></li>
+<li><span class="code">education_type</span>: <span class="code">dict</span></li>
+<li><span class="code">school_track</span>: <span class="code">dict</span></li>
+<li><span class="code">grade</span>: <span class="code">dict</span></li>
+<li><span class="code">school</span>: <span class="code">str</span></li>
+<li><span class="code">small_image</span>: <span class="code">str</span></li>
+<li><span class="code">normal_image</span>: <span class="code">str</span></li>
+<li><span class="code">image_url</span>: <span class="code">str</span></li>
+<li><span class="code">total_members</span>: <span class="code">int</span></li>
+<li><span class="code">owned_group</span>: <span class="code">bool</span></li>
+<li><span class="code">status</span>: <span class="code">str</span></li>
+<li><span class="code">institute</span>: <span class="code">str</span></li>
+<li><span class="code">total_inactive_licenses</span>: <span class="code">int</span></li>
+<li><span class="code">is_owner</span>: <span class="code">bool</span></li>
+<li><span class="code">is_primary_owner</span>: <span class="code">bool</span></li>
+<li><span class="code">is_manager</span>: <span class="code">bool</span></li>
+<li><span class="code">creator</span>: <span class="code">dict</span></li>
+<li><span class="code">shared</span>: <span class="code">bool</span></li>
+<li><span class="code">subject_data</span>: <span class="code">dict</span></li>
+<li><span class="code">requested_to_join_count</span>: <span class="code">int</span></li>
+<li><span class="code">auto_join</span>: <span class="code">bool</span></li>
+<li><span class="code">auto_join_secret</span>: <span class="code">str</span></li>
+<li><span class="code">success</span>: <span class="code">bool</span></li>
+<li><span class="code">clientrequests</span>: <span class="code"><span class="ref" data-ref="class-ClientRequests">ClientRequests</span></span></li>
+</ul></div>
+<div><b>Methods:</b>
+<div style="margin-left:20px; margin-bottom:10px;"><span class="code">__init__</span>(<span class="code">data</span>, <span class="code">clientrequests</span>)
+<div style="margin-left:20px;">Initialize Group from API data.</div>
+</div>
+<div style="margin-left:20px; margin-bottom:10px;"><span class="code">leave</span>()
+<div style="margin-left:20px;">Leave the group by calling the API.</div>
 </div>
 </div>
 </div>
